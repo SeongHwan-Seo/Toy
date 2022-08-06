@@ -14,6 +14,7 @@
 		586E2E56289E2A1300AEC7AE /* Covid19Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586E2E55289E2A1300AEC7AE /* Covid19Tests.swift */; };
 		586E2E60289E2A1300AEC7AE /* Covid19UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586E2E5F289E2A1300AEC7AE /* Covid19UITests.swift */; };
 		586E2E62289E2A1300AEC7AE /* Covid19UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586E2E61289E2A1300AEC7AE /* Covid19UITestsLaunchTests.swift */; };
+		586E2E6F289E2BBF00AEC7AE /* CityCovidOverviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586E2E6E289E2BBF00AEC7AE /* CityCovidOverviewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		586E2E5B289E2A1300AEC7AE /* Covid19UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Covid19UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		586E2E5F289E2A1300AEC7AE /* Covid19UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Covid19UITests.swift; sourceTree = "<group>"; };
 		586E2E61289E2A1300AEC7AE /* Covid19UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Covid19UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		586E2E6E289E2BBF00AEC7AE /* CityCovidOverviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCovidOverviewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				586E2E46289E2A1200AEC7AE /* ContentView.swift */,
 				586E2E48289E2A1300AEC7AE /* Assets.xcassets */,
 				586E2E4A289E2A1300AEC7AE /* Preview Content */,
+				586E2E6E289E2BBF00AEC7AE /* CityCovidOverviewModel.swift */,
 			);
 			path = Covid19;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			files = (
 				586E2E47289E2A1200AEC7AE /* ContentView.swift in Sources */,
 				586E2E45289E2A1200AEC7AE /* Covid19App.swift in Sources */,
+				586E2E6F289E2BBF00AEC7AE /* CityCovidOverviewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
