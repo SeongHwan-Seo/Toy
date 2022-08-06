@@ -1,13 +1,13 @@
 //
-//  Tests_macOSLaunchTests.swift
-//  Tests macOS
+//  Covid19UITestsLaunchTests.swift
+//  Covid19UITests
 //
 //  Created by SHSEO on 2022/08/06.
 //
 
 import XCTest
 
-class Tests_macOSLaunchTests: XCTestCase {
+class Covid19UITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

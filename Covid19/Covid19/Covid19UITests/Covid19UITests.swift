@@ -1,13 +1,13 @@
 //
-//  Tests_iOS.swift
-//  Tests iOS
+//  Covid19UITests.swift
+//  Covid19UITests
 //
 //  Created by SHSEO on 2022/08/06.
 //
 
 import XCTest
 
-class Tests_iOS: XCTestCase {
+class Covid19UITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

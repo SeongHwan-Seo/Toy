@@ -1,6 +1,6 @@
 //
 //  Covid19App.swift
-//  Shared
+//  Covid19
 //
 //  Created by SHSEO on 2022/08/06.
 //
