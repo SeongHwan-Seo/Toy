@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct CityCovidOverviewModel: Codable {
+struct CityCovidOverviwes {
+    let cityCovidOverview: [CityCovidOverview]
+}
+
+struct CityCovidOverview: Codable {
     let korea: CovidOverview
     let seoul: CovidOverview
     let busan: CovidOverview
