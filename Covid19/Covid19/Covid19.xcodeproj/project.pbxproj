@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		581502C028A12C8D009DD67C /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581502BF28A12C8D009DD67C /* ColorExtension.swift */; };
+		581502C328A12FF6009DD67C /* CardModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581502C228A12FF6009DD67C /* CardModifier.swift */; };
 		586E2E45289E2A1200AEC7AE /* Covid19App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586E2E44289E2A1200AEC7AE /* Covid19App.swift */; };
 		586E2E47289E2A1200AEC7AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586E2E46289E2A1200AEC7AE /* ContentView.swift */; };
 		586E2E49289E2A1300AEC7AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 586E2E48289E2A1300AEC7AE /* Assets.xcassets */; };
@@ -40,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		581502BF28A12C8D009DD67C /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		581502C228A12FF6009DD67C /* CardModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModifier.swift; sourceTree = "<group>"; };
 		586E2E41289E2A1200AEC7AE /* Covid19.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Covid19.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		586E2E44289E2A1200AEC7AE /* Covid19App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Covid19App.swift; sourceTree = "<group>"; };
 		586E2E46289E2A1200AEC7AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -83,6 +87,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		581502BD28A12C6D009DD67C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				581502BF28A12C8D009DD67C /* ColorExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		581502C128A12FDE009DD67C /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+				581502C228A12FF6009DD67C /* CardModifier.swift */,
+			);
+			path = Modifier;
+			sourceTree = "<group>";
+		};
 		586E2E38289E2A1200AEC7AE = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +126,8 @@
 		586E2E43289E2A1200AEC7AE /* Covid19 */ = {
 			isa = PBXGroup;
 			children = (
+				581502C128A12FDE009DD67C /* Modifier */,
+				581502BD28A12C6D009DD67C /* Extension */,
 				586E2E44289E2A1200AEC7AE /* Covid19App.swift */,
 				586E2E46289E2A1200AEC7AE /* ContentView.swift */,
 				586E2E48289E2A1300AEC7AE /* Assets.xcassets */,
@@ -283,10 +305,12 @@
 				586E2E80289F962100AEC7AE /* CovidViewModel.swift in Sources */,
 				586E2E78289E437200AEC7AE /* CovidListView.swift in Sources */,
 				586E2E47289E2A1200AEC7AE /* ContentView.swift in Sources */,
+				581502C028A12C8D009DD67C /* ColorExtension.swift in Sources */,
 				586E2E73289E311F00AEC7AE /* CovidDetailView.swift in Sources */,
 				586E2E45289E2A1200AEC7AE /* Covid19App.swift in Sources */,
 				586E2E71289E311300AEC7AE /* CovidView.swift in Sources */,
 				586E2E6F289E2BBF00AEC7AE /* CityCovidOverview.swift in Sources */,
+				581502C328A12FF6009DD67C /* CardModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

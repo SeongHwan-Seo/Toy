@@ -15,42 +15,52 @@ struct CovidView: View {
     @StateObject var viewModel = CovidViewModel()
     
     var body: some View {
+        NavigationView {
+            ZStack {
+                Color.background
+                    .edgesIgnoringSafeArea(.all)
+                
+                VStack {
+                    HStack {
+                        Spacer()
+                        
+                        VStack {
+                            Text("국내 확진자")
+                                .font(.title2)
+                            
+                            Text("\(viewModel.totalCase)명")
+                                .fontWeight(.bold)
+                        } //VStack
+                        
+                        Spacer()
+                        
+                        VStack {
+                            Text("신규 확진자")
+                                .font(.title2)
+                            
+                            Text("\(viewModel.newCase)명")
+                                .fontWeight(.bold)
+                        } //VStack
+                        
+                        Spacer()
+                        
+                    } //HStack
+                    .padding()
+                    
+                    
+                    VStack {
+                        CovidListView(viewModel: viewModel)
+                        
+                    } //VStack
+                    
+                }
+                
+            }//ZStack
+            
+            .navigationBarHidden(true)
+        }// NavigationView
         
-        VStack {
-            HStack {
-                Spacer()
-                
-                VStack {
-                    Text("국내 확진자")
-                        .font(.title2)
-                    
-                    Text("\(viewModel.totalCase) 명")
-                        .fontWeight(.bold)
-                }
-                
-                Spacer()
-                
-                VStack {
-                    Text("신규 확진자")
-                        .font(.title2)
-                    
-                    Text("\(viewModel.newCase) 명")
-                        .fontWeight(.bold)
-                }
-                
-                Spacer()
-                
-            } //HStack
-            .padding()
-            
-            
-            VStack {
-                
-                
-                CovidListView(viewModel: viewModel)
-                
-            }
-        }
+        
         
     }
 }

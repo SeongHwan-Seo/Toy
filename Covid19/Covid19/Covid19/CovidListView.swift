@@ -12,14 +12,57 @@ struct CovidListView: View {
     
     var body: some View {
         //if viewModel.cityCovidOverviews.count != 0 {
-            ForEach(0..<viewModel.cityCovidOverviews.count, id: \.self) { index in
-                Text("\(viewModel.cityCovidOverviews[index].countryName)")
-            }
-        //}
         
+        ScrollView {
+            ForEach(0..<viewModel.cityCovidOverviews.count, id: \.self) { index in
+                
+                NavigationLink(destination: {
+                    Text("dd")
+                }, label: {
+                    ZStack {
+                        Color.white
+                            .cornerRadius(20)
+                        
+                        
+                        HStack {
+                            
+                            VStack(alignment: .leading) {
+                                Text("\(viewModel.cityCovidOverviews[index].countryName)")
+                                    .font(.title2)
+                                
+                                
+                            } //VStack
+                            
+                            Spacer()
+                            
+                            VStack(alignment: .trailing) {
+                                Text("\(viewModel.cityCovidOverviews[index].totalCase)명")
+                                    .font(.title3)
+                                HStack(spacing: 0) {
+                                    Image(systemName: "arrowtriangle.up.fill")
+                                        .foregroundColor(.red)
+                                    Text("\(viewModel.cityCovidOverviews[index].newCase)명")
+                                }
+                                
+                            } //VStack
+                        } // HStack
+                        .padding()
+                        .modifier(CardModifier())
+                        
+                    }// ZStack
+                    .padding(.horizontal)
+                    .foregroundColor(.black)
+                })
+                
+                
+                
+                
+            }// ForEach
+        }// ScrollView
         
         
     }
 }
+
 
 
