@@ -17,7 +17,7 @@ struct CovidListView: View {
             ForEach(0..<viewModel.cityCovidOverviews.count, id: \.self) { index in
                 
                 NavigationLink(destination: {
-                    Text("dd")
+                    CovidDetailView(viewModel.cityCovidOverviews[index])
                 }, label: {
                     ZStack {
                         Color.white

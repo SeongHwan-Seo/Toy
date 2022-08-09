@@ -41,4 +41,6 @@ struct CovidOverview: Codable {
     let percentage: String
     let newCcase: String
     let newFcase: String
+    
+    
 }
