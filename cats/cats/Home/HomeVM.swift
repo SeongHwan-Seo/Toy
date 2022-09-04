@@ -14,33 +14,67 @@ class HomeVM: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     @Published var cats = [Cat]()
+    @Published var isRefresh = false
     
     let baseURL =
     "https://api.thecatapi.com/"
+    let APIKey = "live_0o7NzvNZWpj2wNOEB7E9bBcATToLEoyxiTIfUGFsgnKtF3AQ78nR0RAc4ERvqMQ6"
     
+    struct Param: Encodable {
+        var limit: Int
+        var page: Int
+        var api_key: String = "live_0o7NzvNZWpj2wNOEB7E9bBcATToLEoyxiTIfUGFsgnKtF3AQ78nR0RAc4ERvqMQ6"
+    }
     
-    let param: Parameters = [
-        "limit":  10,
-        "page": 1,
-        "api_key": "live_0o7NzvNZWpj2wNOEB7E9bBcATToLEoyxiTIfUGFsgnKtF3AQ78nR0RAc4ERvqMQ6"
-    ]
+    struct test: Codable {
+        var message: String
+        
+    }
+    
     
     
     /// get Cats Data
-    func fetchCats() {
+    func fetchCats(limit: Int, page: Int ) {
+        let param = Param(limit: limit, page: page)
         AF.request(baseURL + "v1/images/search", method: .get, parameters: param)
             .publishDecodable(type: [Cat].self)
-            .compactMap{ $0.value}
+            .compactMap{ $0.value }
             .sink(receiveCompletion: { completion in
+                
                 print("completion fetch")
             }, receiveValue: {  receivedValue in
-                print(#function)
-                print(receivedValue)
                 
-                self.cats = receivedValue
+                
+                self.cats += receivedValue
+                self.isRefresh = false
             })
             .store(in: &cancellables)
+    }
+    
+    
+    func setFavoriteImage(imageId: String, subId: String ) {
+        let header : HTTPHeaders = [
+            "Content-Type": "application/json",
+            "x-api-key": "\(APIKey)",
+        ]
         
-
+        let param: [String : String] = [
+            "image_id": imageId,
+            "sub_id": subId
+        ]
+        
+        AF.request(baseURL + "v1/favourites", method: .post, parameters: param, encoding: JSONEncoding.default,  headers: header)
+            //.publishDecodable(type: test.self)
+            .publishData()
+            .sink(receiveCompletion: { completion in
+                
+            }, receiveValue: { receivedValue in
+                if receivedValue.response?.statusCode == 200 {
+                    print(receivedValue.data!)
+                } else {
+                    print("error")
+                }
+            })
+            .store(in: &cancellables)
     }
 }
