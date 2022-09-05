@@ -26,12 +26,6 @@ class HomeVM: ObservableObject {
         var api_key: String = "live_0o7NzvNZWpj2wNOEB7E9bBcATToLEoyxiTIfUGFsgnKtF3AQ78nR0RAc4ERvqMQ6"
     }
     
-    struct test: Codable {
-        var message: String
-        
-    }
-    
-    
     
     /// get Cats Data
     func fetchCats(limit: Int, page: Int ) {
@@ -64,7 +58,6 @@ class HomeVM: ObservableObject {
         ]
         
         AF.request(baseURL + "v1/favourites", method: .post, parameters: param, encoding: JSONEncoding.default,  headers: header)
-            //.publishDecodable(type: test.self)
             .publishData()
             .sink(receiveCompletion: { completion in
                 

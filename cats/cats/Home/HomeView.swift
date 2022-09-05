@@ -20,12 +20,15 @@ struct HomeView: View {
                 VStack {
                     ProgressView()
                 }
+                .background(Color.BackgroundColor)
             }
             
             LazyVStack(pinnedViews: .sectionHeaders) {
                 Section(header: Header()){
                     ForEach(0..<viewModel.cats.count, id: \.self) { index in
                         ZStack(alignment: .topTrailing) {
+                            Color.BackgroundColor
+                            
                             ListItem(catURL: viewModel.cats[index].url)
                                 .onAppear {
                                     if index == viewModel.cats.count - 1 {
@@ -35,21 +38,10 @@ struct HomeView: View {
                                     }
                                 }
                                 .onTapGesture(count: 2) {
-                                    print("double tapped!")
-                                    print(index)
+                                    viewModel.setFavoriteImage(imageId: viewModel.cats[index].id, subId: userId)
                                 }
-//                            VStack {
-//                                Button(action: {
-//                                    viewModel.setFavoriteImage(imageId: viewModel.cats[index].id, subId: userId)
-//                                }, label: {
-//                                    Image(systemName: "star")
-//                                        .resizable()
-//                                        .frame(width: 30, height: 30)
-//                                })
-//                            }
-//                            .padding(.horizontal, 14)
                         }
-                       
+                        
                     }
                 }
             }
@@ -72,7 +64,7 @@ struct HomeView: View {
         .clipped()
         
         .onAppear {
-            print(#function)
+            
             viewModel.fetchCats(limit: 9, page: pageNum)
         }
         
@@ -89,16 +81,20 @@ public struct ViewOffsetKey: PreferenceKey {
 
 struct Header: View {
     var body: some View {
-        VStack {
+        
+        VStack(alignment: .leading) {
             Spacer()
-            Text("Cats")
-                .fontWeight(.bold)
+            Text("Home")
+                .font(.system(size: 30, weight: .bold, design: .default))
+                .padding(.horizontal)
             Spacer()
             Divider()
         }
         .frame(minWidth: 0, maxWidth: .infinity)
         .frame(height: 56)
-        .background(Rectangle().foregroundColor(.white))
+        .background(Color.BackgroundColor)
+        
+        
     }
 }
 
@@ -108,20 +104,20 @@ struct ListItem: View {
     
     var body: some View {
         
-            VStack {
-                KFImage(catURL)
-                    .placeholder{
-                        ProgressView()
-                    }
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                    .frame(height: 300)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                    
-                
-            }
-            .padding(.horizontal, 14)
+        VStack {
+            KFImage(catURL)
+                .placeholder{
+                    ProgressView()
+                }
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .frame(height: 300)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+            
+            
+        }
+        .padding(.horizontal, 14)
         
     }
 }

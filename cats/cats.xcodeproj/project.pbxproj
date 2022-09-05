@@ -15,8 +15,11 @@
 		58B5D71228C32B1D00D061CC /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B5D71128C32B1D00D061CC /* MyView.swift */; };
 		58B5D71628C3316A00D061CC /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B5D71528C3316A00D061CC /* HomeVM.swift */; };
 		58B5D71928C331AC00D061CC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 58B5D71828C331AC00D061CC /* Alamofire */; };
-		58B5D71B28C3333900D061CC /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B5D71A28C3333900D061CC /* Cat.swift */; };
+		58B5D71B28C3333900D061CC /* CatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B5D71A28C3333900D061CC /* CatModel.swift */; };
 		58B5D71E28C34F4D00D061CC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 58B5D71D28C34F4D00D061CC /* Kingfisher */; };
+		58C3E1E728C60C5E0006A678 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C3E1E628C60C5E0006A678 /* ColorExtension.swift */; };
+		58C3E1E928C615670006A678 /* MyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C3E1E828C615670006A678 /* MyVM.swift */; };
+		58C3E1EB28C616790006A678 /* MyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C3E1EA28C616790006A678 /* MyModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +31,10 @@
 		58B5D70F28C32B0200D061CC /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		58B5D71128C32B1D00D061CC /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
 		58B5D71528C3316A00D061CC /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
-		58B5D71A28C3333900D061CC /* Cat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
+		58B5D71A28C3333900D061CC /* CatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatModel.swift; sourceTree = "<group>"; };
+		58C3E1E628C60C5E0006A678 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		58C3E1E828C615670006A678 /* MyVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVM.swift; sourceTree = "<group>"; };
+		58C3E1EA28C616790006A678 /* MyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,13 +69,15 @@
 		58B5D70028C3260100D061CC /* cats */ = {
 			isa = PBXGroup;
 			children = (
+				58C3E1E528C60C3D0006A678 /* Extension */,
 				58B5D70128C3260100D061CC /* catsApp.swift */,
 				58B5D70328C3260100D061CC /* ContentView.swift */,
 				58B5D71428C32E8100D061CC /* My */,
 				58B5D71328C32E7800D061CC /* Home */,
 				58B5D70528C3260300D061CC /* Assets.xcassets */,
 				58B5D70728C3260300D061CC /* Preview Content */,
-				58B5D71A28C3333900D061CC /* Cat.swift */,
+				58B5D71A28C3333900D061CC /* CatModel.swift */,
+				58C3E1EA28C616790006A678 /* MyModel.swift */,
 			);
 			path = cats;
 			sourceTree = "<group>";
@@ -95,8 +103,17 @@
 			isa = PBXGroup;
 			children = (
 				58B5D71128C32B1D00D061CC /* MyView.swift */,
+				58C3E1E828C615670006A678 /* MyVM.swift */,
 			);
 			path = My;
+			sourceTree = "<group>";
+		};
+		58C3E1E528C60C3D0006A678 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				58C3E1E628C60C5E0006A678 /* ColorExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,10 +195,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				58B5D71228C32B1D00D061CC /* MyView.swift in Sources */,
+				58C3E1EB28C616790006A678 /* MyModel.swift in Sources */,
 				58B5D71628C3316A00D061CC /* HomeVM.swift in Sources */,
-				58B5D71B28C3333900D061CC /* Cat.swift in Sources */,
+				58B5D71B28C3333900D061CC /* CatModel.swift in Sources */,
 				58B5D71028C32B0200D061CC /* HomeView.swift in Sources */,
 				58B5D70428C3260100D061CC /* ContentView.swift in Sources */,
+				58C3E1E728C60C5E0006A678 /* ColorExtension.swift in Sources */,
+				58C3E1E928C615670006A678 /* MyVM.swift in Sources */,
 				58B5D70228C3260100D061CC /* catsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
