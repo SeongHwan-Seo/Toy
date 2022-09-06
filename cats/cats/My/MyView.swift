@@ -14,73 +14,82 @@ struct MyView: View {
     let userId = "shseo"
     
     var body: some View {
-        NavigationView {
-            VStack {
-                HStack {
-                    Text("Favorites")
-                        .font(.title2)
-                    Spacer()
-                }
-                .padding()
-                
-                ScrollView(.horizontal) {
-                    LazyHStack {
-                        ForEach(0..<viewModel.favorites.count, id: \.self) {
-                            index in
-                            ZStack {
-                                Color.BackgroundColor
-                                
-                                FavoritesItem(catURL: viewModel.favorites[index].image.url)
-                                    
-                            }
-                            
-                        }
-                        
-                    }
-                
-                }
-                .frame(maxHeight: 150)
-                
-                HStack {
-                    Text("Upload")
-                        .font(.title2)
-                    Spacer()
-                }
-                .padding()
-                
-                ScrollView(.horizontal) {
-                    LazyHStack {
-                        ForEach(0..<viewModel.favorites.count, id: \.self) {
-                            index in
-                            ZStack {
-                                Color.BackgroundColor
-                                
-                                FavoritesItem(catURL: viewModel.favorites[index].image.url)
-                                    
-                            }
-                            
-                        }
-                        
-                    }
-                
-                }
-                .frame(maxHeight: 150)
-                
+        VStack {
+            HStack {
+                Text("Favorites")
+                    .font(.title2)
                 Spacer()
             }
+            .padding()
             
-            
-            
-            .navigationTitle("My")
-            .navigationBarItems(trailing: Button(action: {
+            ScrollView(.horizontal) {
+                LazyHStack {
+                    ForEach(0..<viewModel.favorites.count, id: \.self) {
+                        index in
+                        Button(action: {
+                            viewModel.selectedImage = viewModel.favorites
+                            viewModel.selectedImageIndex = index
+                        }, label: {
+                            NavigationLink(destination: ImageView(viewModel: viewModel, index: index), label: {
+                                ZStack {
+                                    Color.BackgroundColor
+                                    
+                                    FavoritesItem(catURL: viewModel.favorites[index].image.url)
+                                    
+                                }
+                            })
+                            
+                        })
+                        
+                        
+                    }
+                    
+                }
                 
-            }, label: {
-                Image(systemName: "plus")
-                    .foregroundColor(.ForegroundColor)
-            }))
+            }
+            .frame(maxHeight: 150)
             
+            HStack {
+                Text("Upload")
+                    .font(.title2)
+                Spacer()
+            }
+            .padding()
+            
+            ScrollView(.horizontal) {
+                LazyHStack {
+                    ForEach(0..<viewModel.favorites.count, id: \.self) {
+                        index in
+                        ZStack {
+                            Color.BackgroundColor
+                            
+                            FavoritesItem(catURL: viewModel.favorites[index].image.url)
+                            
+                            
+                            
+                            
+                        }
+                        
+                    }
+                    
+                }
+                
+            }
+            .frame(maxHeight: 150)
+            
+            Spacer()
         }
-        .navigationViewStyle(.stack)
+        
+        
+        
+        .navigationTitle("My")
+        .navigationBarItems(trailing: Button(action: {
+            
+        }, label: {
+            Image(systemName: "plus")
+                .foregroundColor(.ForegroundColor)
+        }))
+        
         
         .onAppear{
             viewModel.fetchFavorites(sub_id: userId)

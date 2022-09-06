@@ -13,7 +13,8 @@ class MyVM: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     @Published var favorites = [Favorites]()
-    
+    @Published var selectedImage = [Favorites]()
+    @Published var selectedImageIndex = 0
     
     
     let baseURL =
@@ -40,7 +41,8 @@ class MyVM: ObservableObject {
             }, receiveValue: {  receivedValue in
                 print(#function)
                 print(receivedValue)
-                self.favorites += receivedValue
+                
+                self.favorites = receivedValue
 
             })
             .store(in: &cancellables)

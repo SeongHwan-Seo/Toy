@@ -14,7 +14,10 @@ struct Favorites: Codable {
     var id: Int
     var image: FvImage
     
-    
+    init(id :Int, image: FvImage) {
+        self.id = id
+        self.image = image
+    }
 }
 
 struct FvImage: Codable {

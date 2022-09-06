@@ -52,12 +52,8 @@ class HomeVM: ObservableObject {
             "x-api-key": "\(APIKey)",
         ]
         
-        let param: [String : String] = [
-            "image_id": imageId,
-            "sub_id": subId
-        ]
         
-        AF.request(baseURL + "v1/favourites", method: .post, parameters: param, encoding: JSONEncoding.default,  headers: header)
+        AF.request(baseURL + "v1/favourites", method: .post, parameters: FavoriteParam(image_id: imageId, sub_id: subId).serialize(), encoding: JSONEncoding.default, headers: header)
             .publishData()
             .sink(receiveCompletion: { completion in
                 

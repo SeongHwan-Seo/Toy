@@ -25,6 +25,7 @@ struct HomeView: View {
             
             LazyVStack(pinnedViews: .sectionHeaders) {
                 Section(header: Header()){
+                    
                     ForEach(0..<viewModel.cats.count, id: \.self) { index in
                         ZStack(alignment: .topTrailing) {
                             Color.BackgroundColor
@@ -64,8 +65,10 @@ struct HomeView: View {
         .clipped()
         
         .onAppear {
+            if viewModel.cats.count == 0 {
+                viewModel.fetchCats(limit: 9, page: pageNum)
+            }
             
-            viewModel.fetchCats(limit: 9, page: pageNum)
         }
         
     }

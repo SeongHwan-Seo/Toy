@@ -17,7 +17,18 @@ struct Cat: Codable {
     
 }
 
-
+struct FavoriteParam: Codable {
+    var image_id: String
+    var sub_id: String
+    
+    func serialize() -> [String : Any] {
+        return [
+            "image_id" : self.image_id,
+            "sub_id" : self.sub_id,
+            
+       ]
+    }
+}
 
 
 

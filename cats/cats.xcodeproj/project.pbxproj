@@ -20,6 +20,8 @@
 		58C3E1E728C60C5E0006A678 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C3E1E628C60C5E0006A678 /* ColorExtension.swift */; };
 		58C3E1E928C615670006A678 /* MyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C3E1E828C615670006A678 /* MyVM.swift */; };
 		58C3E1EB28C616790006A678 /* MyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C3E1EA28C616790006A678 /* MyModel.swift */; };
+		58D6877628C75DDD006B7CC2 /* EncoderbleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D6877528C75DDD006B7CC2 /* EncoderbleExtension.swift */; };
+		58D6877828C76C3D006B7CC2 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D6877728C76C3D006B7CC2 /* ImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		58C3E1E628C60C5E0006A678 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		58C3E1E828C615670006A678 /* MyVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVM.swift; sourceTree = "<group>"; };
 		58C3E1EA28C616790006A678 /* MyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyModel.swift; sourceTree = "<group>"; };
+		58D6877528C75DDD006B7CC2 /* EncoderbleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncoderbleExtension.swift; sourceTree = "<group>"; };
+		58D6877728C76C3D006B7CC2 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,7 @@
 			children = (
 				58B5D71128C32B1D00D061CC /* MyView.swift */,
 				58C3E1E828C615670006A678 /* MyVM.swift */,
+				58D6877728C76C3D006B7CC2 /* ImageView.swift */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -112,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				58C3E1E628C60C5E0006A678 /* ColorExtension.swift */,
+				58D6877528C75DDD006B7CC2 /* EncoderbleExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -194,9 +200,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58D6877628C75DDD006B7CC2 /* EncoderbleExtension.swift in Sources */,
 				58B5D71228C32B1D00D061CC /* MyView.swift in Sources */,
 				58C3E1EB28C616790006A678 /* MyModel.swift in Sources */,
 				58B5D71628C3316A00D061CC /* HomeVM.swift in Sources */,
+				58D6877828C76C3D006B7CC2 /* ImageView.swift in Sources */,
 				58B5D71B28C3333900D061CC /* CatModel.swift in Sources */,
 				58B5D71028C32B0200D061CC /* HomeView.swift in Sources */,
 				58B5D70428C3260100D061CC /* ContentView.swift in Sources */,
