@@ -35,7 +35,7 @@ class HomeVM: ObservableObject {
             .compactMap{ $0.value }
             .sink(receiveCompletion: { completion in
                 
-                print("completion fetch")
+                print("fetchCats Completion")
             }, receiveValue: {  receivedValue in
                 
                 

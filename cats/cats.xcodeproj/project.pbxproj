@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		583F5AD128C8CC27009D38BE /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583F5AD028C8CC27009D38BE /* PopupView.swift */; };
 		58B5D70228C3260100D061CC /* catsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B5D70128C3260100D061CC /* catsApp.swift */; };
 		58B5D70428C3260100D061CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B5D70328C3260100D061CC /* ContentView.swift */; };
 		58B5D70628C3260300D061CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58B5D70528C3260300D061CC /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		583F5AD028C8CC27009D38BE /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		58B5D6FE28C3260100D061CC /* cats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58B5D70128C3260100D061CC /* catsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catsApp.swift; sourceTree = "<group>"; };
 		58B5D70328C3260100D061CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				58B5D71128C32B1D00D061CC /* MyView.swift */,
 				58C3E1E828C615670006A678 /* MyVM.swift */,
 				58D6877728C76C3D006B7CC2 /* ImageView.swift */,
+				583F5AD028C8CC27009D38BE /* PopupView.swift */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				58B5D71028C32B0200D061CC /* HomeView.swift in Sources */,
 				58B5D70428C3260100D061CC /* ContentView.swift in Sources */,
 				58C3E1E728C60C5E0006A678 /* ColorExtension.swift in Sources */,
+				583F5AD128C8CC27009D38BE /* PopupView.swift in Sources */,
 				58C3E1E928C615670006A678 /* MyVM.swift in Sources */,
 				58B5D70228C3260100D061CC /* catsApp.swift in Sources */,
 			);

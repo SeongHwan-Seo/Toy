@@ -37,7 +37,7 @@ class MyVM: ObservableObject {
             .compactMap{ $0.value }
             .sink(receiveCompletion: { completion in
 
-                print("completion fetch")
+                print("fetchFavorites Completion")
             }, receiveValue: {  receivedValue in
                 print(#function)
                 print(receivedValue)
@@ -47,6 +47,22 @@ class MyVM: ObservableObject {
             })
             .store(in: &cancellables)
         
-
+    }
+    
+    func deleteFavorites(fvId: Int) {
+        let header : HTTPHeaders = [
+            "Content-Type": "application/json",
+            "x-api-key": "\(APIKey)",
+        ]
+        
+        
+        AF.request(baseURL + "v1/favourites/\(fvId)", method: .delete,  encoding: JSONEncoding.default, headers: header)
+            .publishData()
+            .sink(receiveCompletion: { completion in
+                self.favorites.remove(at: self.selectedImageIndex)
+            }, receiveValue: { _ in
+                
+            })
+            .store(in: &cancellables)
     }
 }

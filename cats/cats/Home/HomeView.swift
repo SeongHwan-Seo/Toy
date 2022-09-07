@@ -11,6 +11,8 @@ import Kingfisher
 struct HomeView: View {
     @StateObject var viewModel = HomeVM()
     @State var pageNum = 1
+    @State var isHeart = false
+    @State var selectIndex = 0
     let userId = "shseo"
     
     var body: some View {
@@ -31,6 +33,19 @@ struct HomeView: View {
                             Color.BackgroundColor
                             
                             ListItem(catURL: viewModel.cats[index].url)
+                                .overlay(
+                                    ZStack {
+                                        if isHeart && index == selectIndex{
+                                            Color.clear
+                                            
+                                            Image(systemName: "heart.fill")
+                                                .resizable()
+                                                .frame(width: 50, height: 50)
+                                                .foregroundColor(.red)
+                                        }
+                                        
+                                    }
+                                )
                                 .onAppear {
                                     if index == viewModel.cats.count - 1 {
                                         print("loadMore")
@@ -40,6 +55,13 @@ struct HomeView: View {
                                 }
                                 .onTapGesture(count: 2) {
                                     viewModel.setFavoriteImage(imageId: viewModel.cats[index].id, subId: userId)
+                                    selectIndex = index
+                                    withAnimation(.linear) {
+                                        isHeart = true
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                                            isHeart = false
+                                        }
+                                    }
                                 }
                         }
                         
