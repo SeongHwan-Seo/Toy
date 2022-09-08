@@ -6,12 +6,22 @@
 //
 
 import SwiftUI
+import PhotosUI
 import Kingfisher
 
 struct MyView: View {
     @StateObject var viewModel = MyVM()
     @State var pageNum = 1
     @State var isShowingPopup = false
+    @State var isShowingSheet = false
+    var config: PHPickerConfiguration  {
+           var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+            config.filter = .images //videos, livePhotos...
+            config.selectionLimit = 1 //0 => any, set 1-2-3 for har limit
+            return config
+        }
+    
+    @State var image = UIImage()
     let userId = "shseo"
     
     var body: some View {
@@ -104,12 +114,20 @@ struct MyView: View {
             }
             .navigationTitle("My")
             .navigationBarItems(trailing: Button(action: {
-                
+                isShowingSheet.toggle()
             }, label: {
                 Image(systemName: "plus")
                     .foregroundColor(.ForegroundColor)
             }))
         }
+        .sheet(isPresented: $isShowingSheet) {
+            Text("CustomImagePicker")
+            Image(uiImage: self.image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+            PhotoPicker(configuration: self.config,
+                        pickerResult: self.$image,
+                        isShowingSheet: $isShowingSheet)        }
         
         
     }
