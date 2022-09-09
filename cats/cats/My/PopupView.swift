@@ -10,6 +10,10 @@ import SwiftUI
 struct PopupView: View {
     @StateObject var viewModel: MyVM
     @Binding var isShowingPopup: Bool
+    
+    
+    @Binding var selectType: SelectedType
+    
     //let selectedID: Int
     var body: some View {
         
@@ -21,7 +25,12 @@ struct PopupView: View {
                     .foregroundColor(Color.ForegroundColor)
                 HStack {
                     Button(action: {
-                        viewModel.deleteFavorites(fvId: viewModel.favorites[viewModel.selectedImageIndex].id)
+                        if selectType == .favorites {
+                            viewModel.deleteFavorites(fvId: viewModel.favorites[viewModel.selectedImageIndex].id)
+                        } else {
+                            viewModel.deleteMyUpload(imageID: viewModel.myUploads[viewModel.selectedImageIndex].id)
+                        }
+                        
                         isShowingPopup.toggle()
                     }, label: {
                         Text("삭제")

@@ -20,7 +20,19 @@ struct Favorites: Codable {
     }
 }
 
+struct MyUpload: Codable {
+    var id: String
+    var url: URL
+    var sub_id: String
+}
+
+
 struct FvImage: Codable {
     var id: String
     var url: URL
+}
+
+enum SelectedType {
+    case favorites
+    case upload
 }

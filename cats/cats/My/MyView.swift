@@ -13,16 +13,17 @@ struct MyView: View {
     @StateObject var viewModel = MyVM()
     @State var pageNum = 1
     @State var isShowingPopup = false
-    @State var isShowingSheet = false
+    @State var isShowingPicker = false
     var config: PHPickerConfiguration  {
-           var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
-            config.filter = .images //videos, livePhotos...
-            config.selectionLimit = 1 //0 => any, set 1-2-3 for har limit
-            return config
-        }
-    
-    @State var image = UIImage()
+        var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+        config.filter = .images //videos, livePhotos...
+        config.selectionLimit = 1 //0 => any, set 1-2-3 for har limit
+        return config
+    }
+    @State var image: UIImage? = nil
     let userId = "shseo"
+    @State var selectType: SelectedType = .favorites
+    
     
     var body: some View {
         NavigationView {
@@ -41,15 +42,14 @@ struct MyView: View {
                             Button(action: {
                                 viewModel.selectedImage = viewModel.favorites
                                 viewModel.selectedImageIndex = index
+                                selectType = .favorites
                                 isShowingPopup.toggle()
                             }, label: {
-                                //                                NavigationLink(destination: ImageView(viewModel: viewModel, index: index), label: {
-                                //
-                                //                                })
+                                
                                 ZStack {
                                     Color.BackgroundColor
                                     
-                                    FavoritesItem(catURL: viewModel.favorites[index].image.url)
+                                    MyItem(catURL: viewModel.favorites[index].image.url)
                                     
                                 }
                                 
@@ -72,13 +72,17 @@ struct MyView: View {
                 
                 ScrollView(.horizontal) {
                     LazyHStack {
-                        ForEach(0..<viewModel.favorites.count, id: \.self) {
+                        ForEach(0..<viewModel.myUploads.count, id: \.self) {
                             index in
                             ZStack {
                                 Color.BackgroundColor
                                 
-                                FavoritesItem(catURL: viewModel.favorites[index].image.url)
-                                
+                                MyItem(catURL: viewModel.myUploads[index].url)
+                                    .onTapGesture {
+                                        viewModel.selectedImageIndex = index
+                                        selectType = .upload
+                                        isShowingPopup.toggle()
+                                    }
                                 
                                 
                                 
@@ -97,7 +101,7 @@ struct MyView: View {
                 ZStack{
                     if isShowingPopup {
                         GeometryReader { geometry in
-                            PopupView(viewModel: viewModel, isShowingPopup: $isShowingPopup)
+                            PopupView(viewModel: viewModel, isShowingPopup: $isShowingPopup, selectType: $selectType)
                                 .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
                         }
                         .background(
@@ -111,23 +115,82 @@ struct MyView: View {
             
             .onAppear{
                 viewModel.fetchFavorites(sub_id: userId)
+                viewModel.fetchMyUpload(sub_id: userId)
             }
             .navigationTitle("My")
             .navigationBarItems(trailing: Button(action: {
-                isShowingSheet.toggle()
+                viewModel.isShowingSheet.toggle()
             }, label: {
                 Image(systemName: "plus")
                     .foregroundColor(.ForegroundColor)
             }))
         }
-        .sheet(isPresented: $isShowingSheet) {
-            Text("CustomImagePicker")
-            Image(uiImage: self.image)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-            PhotoPicker(configuration: self.config,
-                        pickerResult: self.$image,
-                        isShowingSheet: $isShowingSheet)        }
+        .sheet(isPresented: $viewModel.isShowingSheet, onDismiss: { viewModel.fetchMyUpload(sub_id: userId)}) {
+            VStack {
+                
+                Image(uiImage: self.image ?? UIImage())
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .frame(height: 300)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .padding()
+                
+                HStack {
+                    Button(action: {
+                        isShowingPicker.toggle()
+                    }, label: {
+                        Text("사진선택")
+                            .font(.system(size: 17, weight: .bold, design: .rounded))
+                            .frame(width: 100, height: 50)
+                            .background(Color.secondary)
+                            .foregroundColor(Color.white)
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                    })
+                    .buttonStyle(PlainButtonStyle())
+                    Button(action: {
+                        if image != nil {
+                            viewModel.uploadMyImage(selectedImage: image ?? UIImage(), subID: "shseo")
+                        }
+                        
+                    }, label: {
+                        if viewModel.isUpload {
+                            ProgressView()
+                                .font(.system(size: 17, weight: .bold, design: .rounded))
+                                .frame(width: 100, height: 50)
+                                .background(Color.blue)
+                                .foregroundColor(Color.white)
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                        } else {
+                            Text("업로드")
+                                .font(.system(size: 17, weight: .bold, design: .rounded))
+                                .frame(width: 100, height: 50)
+                                .background(Color.blue)
+                                .foregroundColor(Color.white)
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                        }
+                        
+                    })
+                    .buttonStyle(PlainButtonStyle())
+                }
+                Spacer()
+            }
+            .overlay(
+                ZStack {
+                    if isShowingPicker {
+                        PhotoPicker(configuration: self.config,
+                                    pickerResult: self.$image,
+                                    isShowingPicker: $isShowingPicker)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        
+                    }
+                    
+                }
+                
+            )
+            
+        }
+        
         
         
     }
@@ -135,7 +198,7 @@ struct MyView: View {
 }
 
 
-struct FavoritesItem: View {
+struct MyItem: View {
     
     var catURL: URL
     

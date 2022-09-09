@@ -10,8 +10,8 @@ import PhotosUI
 
 struct PhotoPicker: UIViewControllerRepresentable {
     let configuration: PHPickerConfiguration
-    @Binding var pickerResult: UIImage
-    @Binding var isShowingSheet: Bool
+    @Binding var pickerResult: UIImage?
+    @Binding var isShowingPicker: Bool
     func makeUIViewController(context: Context) -> PHPickerViewController {
         let controller = PHPickerViewController(configuration: configuration)
         controller.delegate = context.coordinator
@@ -47,7 +47,7 @@ struct PhotoPicker: UIViewControllerRepresentable {
                 }
             }
             // dissmiss the picker
-                //parent.isShowingSheet = false
+                parent.isShowingPicker = false
         }
     }
 }
