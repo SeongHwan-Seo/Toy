@@ -15,6 +15,16 @@
 		58A2FAF929E68DBC00BB8094 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A2FAF829E68DBC00BB8094 /* Color+Ext.swift */; };
 		58A2FAFD29E6928C00BB8094 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A2FAFC29E6928C00BB8094 /* MainView.swift */; };
 		58A2FB0229E6A6CF00BB8094 /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A2FB0129E6A6CF00BB8094 /* HomeVM.swift */; };
+		58DC4C4229E79DBE002AFECF /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DC4C4129E79DBE002AFECF /* ChatView.swift */; };
+		58DC4C4429E79F98002AFECF /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DC4C4329E79F98002AFECF /* MessageView.swift */; };
+		58DC4C4729E79FC1002AFECF /* ChatVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DC4C4629E79FC1002AFECF /* ChatVM.swift */; };
+		58DC4C4A29E7A167002AFECF /* SendMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DC4C4929E7A167002AFECF /* SendMessage.swift */; };
+		58DC4C4C29E7A1C9002AFECF /* ReceiveMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DC4C4B29E7A1C9002AFECF /* ReceiveMessage.swift */; };
+		58DC4C4E29E7AD34002AFECF /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DC4C4D29E7AD34002AFECF /* Message.swift */; };
+		58DC4C5129E7B3AC002AFECF /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = 58DC4C5029E7B3AC002AFECF /* Starscream */; };
+		58DC4C5729E7BE5F002AFECF /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 58DC4C5629E7BE5F002AFECF /* SwiftyJSON */; };
+		58DC4C5929E7D213002AFECF /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DC4C5829E7D213002AFECF /* View+Ext.swift */; };
+		58DC4C5C29E7D842002AFECF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 58DC4C5B29E7D842002AFECF /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +37,13 @@
 		58A2FAF829E68DBC00BB8094 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
 		58A2FAFC29E6928C00BB8094 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		58A2FB0129E6A6CF00BB8094 /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
+		58DC4C4129E79DBE002AFECF /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		58DC4C4329E79F98002AFECF /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		58DC4C4629E79FC1002AFECF /* ChatVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVM.swift; sourceTree = "<group>"; };
+		58DC4C4929E7A167002AFECF /* SendMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessage.swift; sourceTree = "<group>"; };
+		58DC4C4B29E7A1C9002AFECF /* ReceiveMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveMessage.swift; sourceTree = "<group>"; };
+		58DC4C4D29E7AD34002AFECF /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		58DC4C5829E7D213002AFECF /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +51,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58DC4C5C29E7D842002AFECF /* Kingfisher in Frameworks */,
+				58DC4C5729E7BE5F002AFECF /* SwiftyJSON in Frameworks */,
+				58DC4C5129E7B3AC002AFECF /* Starscream in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +79,7 @@
 		58A2FAE329E68A4700BB8094 /* Toy-OpenChat */ = {
 			isa = PBXGroup;
 			children = (
+				58DC4C3F29E79DA0002AFECF /* Chat */,
 				58A2FAFA29E6926500BB8094 /* Main */,
 				58A2FAF729E68DAF00BB8094 /* Extension */,
 				58A2FAF229E68C8D00BB8094 /* Splash */,
@@ -90,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				58A2FAF829E68DBC00BB8094 /* Color+Ext.swift */,
+				58DC4C5829E7D213002AFECF /* View+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -119,6 +141,43 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		58DC4C3F29E79DA0002AFECF /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				58DC4C4829E7A153002AFECF /* Model */,
+				58DC4C4529E79FB1002AFECF /* ViewModel */,
+				58DC4C4029E79DAD002AFECF /* View */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		58DC4C4029E79DAD002AFECF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				58DC4C4129E79DBE002AFECF /* ChatView.swift */,
+				58DC4C4329E79F98002AFECF /* MessageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		58DC4C4529E79FB1002AFECF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				58DC4C4629E79FC1002AFECF /* ChatVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		58DC4C4829E7A153002AFECF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				58DC4C4929E7A167002AFECF /* SendMessage.swift */,
+				58DC4C4B29E7A1C9002AFECF /* ReceiveMessage.swift */,
+				58DC4C4D29E7AD34002AFECF /* Message.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,6 +194,11 @@
 			dependencies = (
 			);
 			name = "Toy-OpenChat";
+			packageProductDependencies = (
+				58DC4C5029E7B3AC002AFECF /* Starscream */,
+				58DC4C5629E7BE5F002AFECF /* SwiftyJSON */,
+				58DC4C5B29E7D842002AFECF /* Kingfisher */,
+			);
 			productName = "Toy-OpenChat";
 			productReference = 58A2FAE129E68A4700BB8094 /* Toy-OpenChat.app */;
 			productType = "com.apple.product-type.application";
@@ -163,6 +227,11 @@
 				Base,
 			);
 			mainGroup = 58A2FAD829E68A4700BB8094;
+			packageReferences = (
+				58DC4C4F29E7B3AC002AFECF /* XCRemoteSwiftPackageReference "Starscream" */,
+				58DC4C5529E7BE5F002AFECF /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				58DC4C5A29E7D842002AFECF /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 58A2FAE229E68A4700BB8094 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -189,10 +258,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58DC4C5929E7D213002AFECF /* View+Ext.swift in Sources */,
+				58DC4C4729E79FC1002AFECF /* ChatVM.swift in Sources */,
+				58DC4C4C29E7A1C9002AFECF /* ReceiveMessage.swift in Sources */,
+				58DC4C4A29E7A167002AFECF /* SendMessage.swift in Sources */,
 				58A2FAE729E68A4700BB8094 /* ContentView.swift in Sources */,
 				58A2FAF929E68DBC00BB8094 /* Color+Ext.swift in Sources */,
 				58A2FAE529E68A4700BB8094 /* Toy_OpenChatApp.swift in Sources */,
 				58A2FB0229E6A6CF00BB8094 /* HomeVM.swift in Sources */,
+				58DC4C4429E79F98002AFECF /* MessageView.swift in Sources */,
+				58DC4C4229E79DBE002AFECF /* ChatView.swift in Sources */,
+				58DC4C4E29E7AD34002AFECF /* Message.swift in Sources */,
 				58A2FAFD29E6928C00BB8094 /* MainView.swift in Sources */,
 				58A2FAF629E68CC600BB8094 /* SplashView.swift in Sources */,
 			);
@@ -395,6 +471,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		58DC4C4F29E7B3AC002AFECF /* XCRemoteSwiftPackageReference "Starscream" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/daltoniam/Starscream";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		58DC4C5529E7BE5F002AFECF /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		58DC4C5A29E7D842002AFECF /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		58DC4C5029E7B3AC002AFECF /* Starscream */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58DC4C4F29E7B3AC002AFECF /* XCRemoteSwiftPackageReference "Starscream" */;
+			productName = Starscream;
+		};
+		58DC4C5629E7BE5F002AFECF /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58DC4C5529E7BE5F002AFECF /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		58DC4C5B29E7D842002AFECF /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58DC4C5A29E7D842002AFECF /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 58A2FAD929E68A4700BB8094 /* Project object */;
 }
