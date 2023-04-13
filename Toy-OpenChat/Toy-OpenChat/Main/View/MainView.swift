@@ -10,6 +10,9 @@ import SwiftUI
 struct MainView: View {
     let viewModel = HomeVM()
     @State var nameText = ""
+    var isDisabled: Bool {
+        nameText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
@@ -19,19 +22,22 @@ struct MainView: View {
                     .cornerRadius(10)
                 
                     NavigationLink(destination: {
-                        Text("dd")
+                        ChatView()
                     }, label: {
                         Text("Start")
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
+                            
                     })
                     .simultaneousGesture(TapGesture().onEnded{
-                        print("gg")
-                        //viewModel.setName(name: nameText)
+                        viewModel.setName(name: nameText)
                     })
                     .frame(width: 80, height: 40)
-                    .background(Color.mainColor)
+                    .background{
+                        isDisabled ? Color.gray : Color.mainColor
+                    }
                     .cornerRadius(10)
+                    .disabled(isDisabled)
                 
             }
             .padding()
