@@ -6,3 +6,22 @@
 //
 
 import Foundation
+
+struct ReceiveMessage: Decodable {
+    var event: String?
+    var data: String?
+    var channel: String?
+    
+    var messageData: MessageData? {
+        guard let data = data?.data(using: .utf8) else { return nil }
+        return try? JSONDecoder().decode(MessageData.self, from: data)
+    }
+}
+
+struct MessageData: Decodable {
+    var id: String?
+    var username: String?
+    var profileImage: String?
+    var message: String?
+    var createdAt: String?
+}
