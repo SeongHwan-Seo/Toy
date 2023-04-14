@@ -12,10 +12,10 @@ import SwiftyJSON
 class ChatVM: ObservableObject {
     
     @Published var message = [MessageData]()
-    
+    @Published var scrollToEnd = false
     private var socket: WebSocket?
-    private let socketUrl = URL(string: "wss://ws-ap3.pusher.com:443/app/bd0b7360f2c92f6cff54")!
-    private let postUrl = URL(string: "https://phplaravel-574671-3402493.cloudwaysapps.com/api/new-message")!
+    private let socketUrl = "소켓주소"
+    private let postUrl = "포스트요청주소"
     
     init() {
         connect()
@@ -97,8 +97,6 @@ extension ChatVM: WebSocketDelegate {
         case .disconnected(let reason, let code):
             print("websocket is disconnected: \(reason) with code: \(code)")
         case .text(let string):
-            print("Received text: \(string)")
-            
             do {
                 let decoder = JSONDecoder()
                 let result = try decoder.decode(ReceiveMessage.self, from: Data(string.utf8))
@@ -106,14 +104,13 @@ extension ChatVM: WebSocketDelegate {
                 if result.event == "message.new" {
                     guard let data = result.messageData else { return }
                     message.append(data)
+                    scrollToEnd = true
                 }
                 
             }
             catch {
                 print(error.localizedDescription)
             }
-            
-            print(message)
         case .binary(let data):
             print("Received data: \(data.count)")
         case .ping(_):
@@ -126,13 +123,8 @@ extension ChatVM: WebSocketDelegate {
             break
         case .cancelled:
             print("soket cancelled")
-            //isConnected = false
         case .error(let error):
             print("error : \(error?.localizedDescription)")
-//            isConnected = false
-//            handleError(error)
         }
     }
-    
-    
 }
