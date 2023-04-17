@@ -12,30 +12,44 @@ struct ChatView: View {
     @StateObject var viewModel = ChatVM()
     
     var body: some View {
-        ZStack {
-            Color.clear
-                .navigationBarTitleDisplayMode(.inline)
-            
+       
             VStack {
-                ScrollView {
-                    VStack(spacing: 10) {
-                        ForEach(viewModel.message, id: \.id) { message in
-                            MessageView(message: message)
+                ScrollViewReader { proxy in
+                    ScrollView {
+                        VStack(spacing: 10) {
+                            ForEach(viewModel.message, id: \.id) { message in
+                                MessageView(message: message)
+                            }
                         }
+                        //.frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .padding()
+                        .onChange(of: viewModel.scrollToEnd, perform: { value in
+                            if value {
+                                withAnimation {
+                                    proxy.scrollTo(viewModel.message.last?.id, anchor: .bottom)
+                                }
+                                viewModel.scrollToEnd = false
+                            }
+                        })
+                        
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .padding()
+                }
+                .onTapGesture {
+                    hideKeyboard()
                 }
                 HStack {
                     TextField("메시지 보내기...", text: $messageText)
                     Button("Send") {
+                        if messageText == "" { return }
                         viewModel.sendMessage(messageText)
                         messageText = ""
                     }
                 }
                 .padding()
+                
             }
-        }
+            //.navigationBarTitleDisplayMode(.inline)
+        
     }
 }
 

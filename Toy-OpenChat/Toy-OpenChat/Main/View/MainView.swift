@@ -15,19 +15,21 @@ struct MainView: View {
     }
     var body: some View {
         NavigationView {
-            VStack(spacing: 20) {
-                TextField("Enter your name", text: $nameText)
-                    .padding()
-                    .background(Color(uiColor: .secondarySystemBackground))
-                    .cornerRadius(10)
+            ZStack {
+                Color.white
                 
+                VStack(spacing: 20) {
+                    TextField("Enter your name", text: $nameText)
+                        .padding()
+                        .background(Color(uiColor: .secondarySystemBackground))
+                        .cornerRadius(10)
+                    
                     NavigationLink(destination: {
                         ChatView()
                     }, label: {
                         Text("Start")
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
-                            
                     })
                     .simultaneousGesture(TapGesture().onEnded{
                         viewModel.setName(name: nameText)
@@ -38,13 +40,18 @@ struct MainView: View {
                     }
                     .cornerRadius(10)
                     .disabled(isDisabled)
-                
+                    
+                }
+                .padding()
             }
-            .padding()
+            .onTapGesture {
+                hideKeyboard()
+            }
             
-                .navigationTitle("PPAK-OpenChat")
-                .navigationBarTitleDisplayMode(.large)
+            .navigationTitle("PPAK-OpenChat")
+            .navigationBarTitleDisplayMode(.large)
         }
+        
     }
 }
 

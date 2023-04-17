@@ -14,8 +14,10 @@ class ChatVM: ObservableObject {
     @Published var message = [MessageData]()
     @Published var scrollToEnd = false
     private var socket: WebSocket?
-    private let socketUrl = "소켓주소"
-    private let postUrl = "포스트요청주소"
+    //    private let socketUrl = "소켓주소"
+    //    private let postUrl = "포스트요청주소"
+    private let socketUrl = URL(string: "wss://ws-ap3.pusher.com:443/app/bd0b7360f2c92f6cff54")!
+    private let postUrl = URL(string: "https://phplaravel-574671-3402493.cloudwaysapps.com/api/new-message")!
     
     init() {
         connect()
@@ -42,7 +44,7 @@ class ChatVM: ObservableObject {
         
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
-
+        
         do {
             let jsonData = try encoder.encode(sendMessage)
             
