@@ -6,15 +6,23 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct InputTextView: View {
+    @Binding var messageText: String
+    let store: Store<MessageState, MessageAction>
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-struct InputTextView_Previews: PreviewProvider {
-    static var previews: some View {
-        InputTextView()
+        WithViewStore(store.self) { viewStore in
+            HStack {
+                TextField("메시지 보내기...", text: $messageText)
+                Button("Send") {
+                    if messageText == "" { return }
+                    viewStore.send(.sendMessage(messageText))
+                    messageText = ""
+                }
+            }
+            .padding()
+        }
     }
 }

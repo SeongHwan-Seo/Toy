@@ -43,6 +43,8 @@ let messageReducer = Reducer<MessageState, MessageAction, MessageEnvironment> { 
     
 }
 
+let store = Store<MessageState, MessageAction>(initialState: MessageState(), reducer: messageReducer, environment: MessageEnvironment(messageClinet: MessageClient.live, mainQueue: .main))
+
 struct HomeView: View {
     let store: Store<MessageState, MessageAction>
     

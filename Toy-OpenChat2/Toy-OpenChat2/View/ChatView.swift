@@ -17,12 +17,12 @@ struct ChatView: View {
             VStack {
                 ScrollViewReader { proxy in
                     ScrollView {
-                        VStack(spacing: 10) {
+                        LazyVStack(spacing: 10) {
                             ForEach(viewStore.state.messages, id: \.id) { message in
                                 MessageView(message: message)
                             }
                         }
-                        //.frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .padding()
                         .onChange(of: viewStore.state.scrollToEnd, perform: { value in
                             if value {
@@ -35,15 +35,7 @@ struct ChatView: View {
                         
                     }
                 }
-                HStack {
-                    TextField("메시지 보내기...", text: $messageText)
-                    Button("Send") {
-                        if messageText == "" { return }
-                        viewStore.send(.sendMessage(messageText))
-                        messageText = ""
-                    }
-                }
-                .padding()
+                InputTextView(messageText: $messageText, store: store)
             }
             .onAppear {
                 viewStore.send(.connect)
