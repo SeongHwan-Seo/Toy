@@ -9,30 +9,28 @@ import SwiftUI
 
 struct MainView: View {
     let viewModel = HomeVM()
-    @State var nameText = ""
+    @AppStorage("name") private var name = ""
+    @State var stack = NavigationPath()
     var isDisabled: Bool {
-        nameText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
     var body: some View {
-        NavigationView {
+        NavigationStack(path: $stack) {
             ZStack {
                 Color.white
                 
                 VStack(spacing: 20) {
-                    TextField("Enter your name", text: $nameText)
+                    TextField("Enter your name", text: $name)
                         .padding()
                         .background(Color(uiColor: .secondarySystemBackground))
                         .cornerRadius(10)
                     
                     NavigationLink(destination: {
-                        ChatView()
+                        ChatView(name: name)
                     }, label: {
                         Text("Start")
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
-                    })
-                    .simultaneousGesture(TapGesture().onEnded{
-                        viewModel.setName(name: nameText)
                     })
                     .frame(width: 80, height: 40)
                     .background{
